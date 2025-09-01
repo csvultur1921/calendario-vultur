@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #000; /* Sfondo nero */
-      color: #fff;
+      background: #fff; /* SFONDO BIANCO */
+      color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,27 +30,46 @@
     h1 {
       font-size: 28px;
       margin-bottom: 10px;
-      color: #ffffff;
+      color: #000;
       letter-spacing: 1px;
     }
 
     p {
       font-size: 18px;
-      color: #cccccc;
-      margin-bottom: 30px;
+      color: #333;
+      margin-bottom: 20px;
     }
 
     .calendar-image {
       max-width: 100%;
       height: auto;
-      margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
     .calendar-image:hover {
       transform: scale(1.02);
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #444;
     }
 
     @media (max-width: 600px) {
@@ -65,12 +84,24 @@
     <img src="img/logo.png" alt="Logo Vultur 1921" class="logo">
     <h1>CALENDARIO STAGIONE 2025/26</h1>
     <p>Scopri tutte le partite della Vultur ⚪⚫</p>
-    
-    <!-- Calendario Andata -->
-    <img src="img/andata.png" alt="Calendario Andata 2025/26" class="calendar-image">
-    
-    <!-- Calendario Ritorno -->
-    <img src="img/ritorno.png" alt="Calendario Ritorno 2025/26" class="calendar-image">
+
+    <div class="buttons">
+      <button class="btn" onclick="showImage('andata')">Andata</button>
+      <button class="btn" onclick="showImage('ritorno')">Ritorno</button>
+    </div>
+
+    <img id="calendar" src="img/andata.png" alt="Calendario ufficiale 2025/26" class="calendar-image">
   </div>
+
+  <script>
+    function showImage(type) {
+      const calendar = document.getElementById('calendar');
+      if (type === 'andata') {
+        calendar.src = "img/andata.png";
+      } else {
+        calendar.src = "img/ritorno.png";
+      }
+    }
+  </script>
 </body>
 </html>
