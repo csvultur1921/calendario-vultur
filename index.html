@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calendario Vultur 2025/26</title>
+  <title>Calendario Vultur 2026/27</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #fff; /* SFONDO BIANCO */
+      background: #fff; 
       color: #000;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
       min-height: 100vh;
     }
 
@@ -20,6 +20,7 @@
       text-align: center;
       max-width: 900px;
       padding: 30px 20px;
+      margin: auto;
     }
 
     .logo {
@@ -40,68 +41,99 @@
       margin-bottom: 20px;
     }
 
+    .buttons {
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background: #e0e0e0;
+      color: #000;
+      border: 2px solid transparent;
+      padding: 10px 25px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn.active {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn:hover:not(.active) {
+      background: #ccc;
+    }
+
     .calendar-image {
       max-width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
     }
 
     .calendar-image:hover {
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
 
-    .buttons {
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #444;
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #eee;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     @media (max-width: 600px) {
       h1 { font-size: 22px; }
       p { font-size: 16px; }
       .logo { width: 70px; }
+      .btn { padding: 8px 18px; font-size: 15px; }
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <img src="img/logo.png" alt="Logo Vultur 1921" class="logo">
-    <h1>CALENDARIO STAGIONE 2025/26</h1>
+    <!-- Aggiornato ?v=3 per la nuova stagione -->
+    <img src="img/logo.png?v=3" alt="Logo Vultur 1921" class="logo">
+    <h1>CALENDARIO STAGIONE 2026/27</h1>
     <p>Scopri tutte le partite della Vultur ⚪⚫</p>
 
     <div class="buttons">
-      <button class="btn" onclick="showImage('andata')">Andata</button>
-      <button class="btn" onclick="showImage('ritorno')">Ritorno</button>
+      <button class="btn active" onclick="showImage('andata', this)">Andata</button>
+      <button class="btn" onclick="showImage('ritorno', this)">Ritorno</button>
     </div>
 
-    <img id="calendar" src="img/andata.png" alt="Calendario ufficiale 2025/26" class="calendar-image">
+    <img id="calendar" src="img/andata.png" alt="Calendario ufficiale 2026/27 - Girone di Andata" class="calendar-image">
   </div>
 
+  <footer>
+    <p>© 2026 Vultur 1921. Tutti i diritti riservati. Fino alla fine ⚪⚫</p>
+  </footer>
+
   <script>
-    function showImage(type) {
+    function showImage(type, buttonClicked) {
       const calendar = document.getElementById('calendar');
+      const buttons = document.querySelectorAll('.btn');
+      
+      buttons.forEach(btn => btn.classList.remove('active'));
+      buttonClicked.classList.add('active');
+      
       if (type === 'andata') {
         calendar.src = "img/andata.png";
+        calendar.alt = "Calendario ufficiale 2026/27 - Girone di Andata";
       } else {
         calendar.src = "img/ritorno.png";
+        calendar.alt = "Calendario ufficiale 2026/27 - Girone di Ritorno";
       }
     }
   </script>
+
 </body>
 </html>
