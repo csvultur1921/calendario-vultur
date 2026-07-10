@@ -1,2 +1,2 @@
 # calendario-vultur
-Calendario stagione 2025/26 – C.S. Vultur 1921
+Calendario stagione 2026/27 – C.S. Vultur 1921
